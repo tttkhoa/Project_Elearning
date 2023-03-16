@@ -12,7 +12,7 @@ const routes = [
       },
       {
         path: "login",
-        element: lazy(() => import("../pages/HomeTemplate/LoginPage/")),
+        element: lazy(() => import("../pages/HomeTemplate/LoginPage")),
       },
       {
         path: "register",

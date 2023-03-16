@@ -1,0 +1,23 @@
+*{
+    font-family: 'Roboto';
+    font-size: 22px;
+    padding: 0;
+    margin: 0;
+}
+.nav-menu .nav-item:hover a{
+    background-color: orange!important;
+    color:white!important;
+}
+.nav-menu .nav-item.active{
+    background-color:orange!important;
+    color: white !important;
+}
+.nav-menu .nav-item a{
+    color: orange!important;    
+}
+.nav-menu{
+    width: 100%;
+}
+.search-box{
+    width: 110%;
+}
