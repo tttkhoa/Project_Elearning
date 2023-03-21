@@ -143,7 +143,7 @@ export default function RegisterCourseModal(props) {
 
   const course = props.course;
   const { listUserNotRegistered,listUserWaiting,listUserRegistered} = useSelector(
-    (state) => state.registerCourseByCourseReducer
+    (state) => state.registerCourseByUserReducer
   );
   // console.log(course)
 
