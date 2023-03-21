@@ -2,17 +2,17 @@ import * as ActionType from "./types";
 
 const initialState = {
   data: null,
-  userDelete:null,
+  loaiNguoiDung:null
 };
 
-const listUserReducer = (state = initialState, action) => {
+const addUserReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.LIST_USER_SUCCESS: {
+    case ActionType.ADD_USER_SUCCESS: {
       state.data = action.payload;
       return { ...state };
     }
-    case ActionType.DELETE_USER_SUCCESS: {
-      state.userDelete = action.payload;
+    case ActionType.LAYDANHSACHLOAINGUOIDUNG: {
+      state.loaiNguoiDung = action.payload
       return { ...state };
     }
     default:
@@ -20,4 +20,4 @@ const listUserReducer = (state = initialState, action) => {
   }
 };
 
-export default listUserReducer;
+export default addUserReducer;

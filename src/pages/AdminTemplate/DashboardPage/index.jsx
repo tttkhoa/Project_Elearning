@@ -1,15 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Breadcrumb } from "antd";
 
 export default function Dashboard() {
   return (
     <div className="px-3 py-4">
-      <Breadcrumb style={{backgroundColor:"#e9ecef",padding:"5px"}}>
-        <Breadcrumb.Item>Admin</Breadcrumb.Item>
-        <Breadcrumb.Item>Manage</Breadcrumb.Item>
-      </Breadcrumb>
-      <ol className="breadcrumb mb-4 p-2"></ol>
+      <ol className="breadcrumb mb-4 p-2">
+        <li className="breadcrumb-item active">Dashboard</li>
+      </ol>
       <div className="row justify-content-center mt-5">
         <div className="col-xl-3 col-md-6">
           <div className="card bg-primary text-white mb-4">
