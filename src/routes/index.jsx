@@ -49,9 +49,29 @@ const routes = [
         element: lazy(() => import("../pages/AdminTemplate/ManageUserPage")),
       },
       {
+        path: "manage-user/add-user",
+        element: lazy(() => import("../pages/AdminTemplate/ManageUserPage/AddUserPage")),
+      },
+      {
+        path: "manage-user/edit-user/:id",
+        element: lazy(() => import("../pages/AdminTemplate/ManageUserPage/EditUserPage")),
+      },
+      {
         path: "manage-course",
         element: lazy(() =>
           import("../pages/AdminTemplate/ManageCoursePage")
+        ),
+      },
+      {
+        path: "manage-course/add-course",
+        element: lazy(() =>
+          import("../pages/AdminTemplate/ManageCoursePage/AddCoursePage")
+        ),
+      },
+      {
+        path: "manage-course/edit-course/:id",
+        element: lazy(() =>
+          import("../pages/AdminTemplate/ManageCoursePage/EditCoursePage")
         ),
       },
     ],

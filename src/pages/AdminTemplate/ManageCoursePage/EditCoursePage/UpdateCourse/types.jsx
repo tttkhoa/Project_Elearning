@@ -1,0 +1,1 @@
+export const UPDATE_COURSE_SUCCESS = "@updateCourseReducer/UPDATE_COURSE_SUCCESS"
