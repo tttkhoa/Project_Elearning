@@ -12,7 +12,7 @@ const routes = [
       },
       {
         path: "login",
-        element: lazy(() => import("../pages/HomeTemplate/LoginPage/")),
+        element: lazy(() => import("../pages/HomeTemplate/LoginPage")),
       },
       {
         path: "register",
@@ -23,7 +23,7 @@ const routes = [
         element: lazy(() => import("../pages/HomeTemplate/ProfilePage")),
       },
       {
-        path: "detail-course",
+        path: "detail-course/:id",
         element: lazy(() => import("../pages/HomeTemplate/DetailCoursePage")),
       },
       {
@@ -33,6 +33,10 @@ const routes = [
       {
         path: "find-course",
         element: lazy(() => import("../pages/HomeTemplate/FindCoursePage"))
+      },
+      {
+        path: "list-course-bycategory/:id",
+        element: lazy(() => import("../pages/HomeTemplate/ListCourseByCategory"))
       },
     ],
   },
