@@ -5,8 +5,8 @@ import Loader from '../_component/Loader';
 import { actFetchListCourse } from './duck/action';
 import Course from './Course';
 export default function ListCoursePage(){    
-  const loading=useSelector((state)=>state.listCourseReducer.loading);
-  const data=useSelector((state)=>state.listCourseReducer.data);
+  const loading=useSelector((state)=>state.listCourseReducerHome.loading);
+  const data=useSelector((state)=>state.listCourseReducerHome.data);
   const dispatch=useDispatch();
   useEffect(()=>{
     dispatch(actFetchListCourse()); 

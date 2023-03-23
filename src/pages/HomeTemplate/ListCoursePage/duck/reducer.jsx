@@ -4,7 +4,7 @@ const initialState={
     data:null,
     error:null,
 }
-export const listCourseReducer=(state=initialState,action)=>{
+export const listCourseReducerHome=(state=initialState,action)=>{
     switch(action.type){
         case ActionType.LIST_COURSE_REQUEST:{
             state.loading=true;

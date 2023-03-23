@@ -5,7 +5,7 @@ const initialState = {
     courseDeleted:null,
 }
 
-const listCourseReducer = (state = initialState,action) => {
+const listCourseReducerAdmin = (state = initialState,action) => {
     switch (action.type) {
         case ActionType.LIST_COURSE_SUCCESS:{
             state.listCourse = action.payload
@@ -20,4 +20,4 @@ const listCourseReducer = (state = initialState,action) => {
     }
 }
 
-export default listCourseReducer;
+export default listCourseReducerAdmin;
