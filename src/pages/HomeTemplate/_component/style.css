@@ -19,5 +19,46 @@
     width: 100%;
 }
 .search-box{
-    width: 110%;
+    max-width: 100%;
+    
+}
+.search-box::placeholder {
+    text-align: center;
+  }
+.dropdown-menu{
+    background-color: #fec235;
+    border: 1px solid #a37303;
+    width: 264px;
+    padding: 0;
+    overflow: hidden;
+    
+}
+
+.dropdown-subitem:hover{
+   
+    background-color: rgb(240, 238, 235);
+    
+}
+.dropdown-subitem{
+    border: 1px solid rgb(194, 190, 190);   
+}
+.left-content{
+    text-align: justify;    
+}
+.input-register input{
+    border: 1px solid orange;
+    border-radius: 7px;    
+    margin-right: 10px;
+    width: 60%;
+    padding: 0 10px;
+}
+.input-register button:hover{
+    color:black;
+}
+.center-content input{
+    border:1px solid orange;
+    border-radius: 7px;
+    margin: 5px 0;
+    padding: 5px ;
+
 }

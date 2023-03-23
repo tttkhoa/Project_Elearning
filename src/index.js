@@ -1,16 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-import "bootstrap/dist/css/bootstrap.min.css"
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./sass/style.scss";
 import App from './App';
-
 import "jquery/dist/jquery.min.js"
 import "popper.js/dist/umd/popper.min.js"
 import "bootstrap/dist/js/bootstrap.min.js"
 import store from './store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

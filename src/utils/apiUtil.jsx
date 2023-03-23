@@ -4,8 +4,7 @@ const TOKEN_CYBERSOFT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb2
 
 const api = axios.create({
     baseURL:"https://elearningnew.cybersoft.edu.vn/api/",
-})
-
+});
 api.interceptors.request.use((config) => {
     config.headers = {
         ...config.headers,
