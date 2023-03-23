@@ -25,7 +25,7 @@ export default function ManageCoursePage() {
   };
   
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.listCourseReducer.listCourse);
+  const data = useSelector((state) => state.listCourseReducerAdmin.listCourse);
   const [course,setCourse] = useState({})
 
   useEffect(() => {
