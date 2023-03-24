@@ -5,6 +5,8 @@ import { useSelector,useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchCourseMenu } from "./duck/action";
 import Loader from "./Loader";
+import { actKeyword } from "../FindCoursePage/duck/action";
+import { useNavigate } from "react-router-dom";
 export default function HeaderHomePage() {
   const loading=useSelector((state)=>state.courseMenuReducer.loading);
   const data=useSelector((state)=>state.courseMenuReducer.data);
@@ -14,10 +16,19 @@ export default function HeaderHomePage() {
       // eslint-disable-next-line
   },[]);
   const renderCourseMenu=()=>{
-      return data?.map((item,index)=>{
+      return data?.map((item)=>{
         return <li className="dropdown-subitem" key={item.maDanhMuc}><NavLink className={({isActive})=>isActive?"dropdown-item rounded":"dropdown-item"} to={`/list-course-bycategory/${item.maDanhMuc}`}>{item.tenDanhMuc}</NavLink></li>
       })
   }
+  const navigate=useNavigate();
+  const handleOnChange=(event)=>{
+    if(event.target){
+      const {value}=event.target;     
+      dispatch(actKeyword(value));      
+      navigate("/find-course");      
+    }
+    
+  }  
   if(loading) return <Loader/>
   return (
     <>
@@ -50,7 +61,7 @@ export default function HeaderHomePage() {
               </ul>
             </li>
             <li className="nav-item mx-auto my-2">
-              <input type="text" className="search-box py-2 px-3" placeholder='Tìm kiếm khoá học'/>
+              <input type="text" className="search-box py-2 px-3" placeholder='Tìm kiếm khoá học' onChange={handleOnChange}/>
             </li>  
             <li className="nav-item mx-auto my-2">              
                 <button className="btn btn-outline-warning mx-1 d-md-none d-lg-inline-block">

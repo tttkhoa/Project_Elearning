@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import Course from './Course';
 import Loader from '../_component/Loader';
 import { useParams } from 'react-router-dom';
+import "./../ListCoursePage/Course/style.css";
 export default function ListCourseByCategory() {
     const params=useParams();
     const loading=useSelector((state)=>state.listCourseByCategoryReducer.loading);
