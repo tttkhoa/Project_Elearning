@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import Footer from "./_components/Footer";
 import Header from "./_components/Header";
 import Sidebar from "./_components/Sidebar";
+import TestModal from "../Modal/TestModal";
 
 // export default function AdminTemplate() {
 //   const { Header, Content, Footer, Sider } = Layout;
@@ -87,8 +88,9 @@ export default function AdminTemplate(){
     return <Navigate  replace to="/auth"/>
   }
   
-  return (
+  return (    
     <div>
+    <TestModal/>
     <Header />
     <div id="layoutSidenav">
       <Sidebar />

@@ -116,11 +116,12 @@ export default function ManageUserPage() {
               onClick={() => {
                 const taiKhoanObj = new taiKhoan();
                 taiKhoanObj.taiKhoan = user.taiKhoan;
-                showModal();
-                setUser(user);
-                dispatch(actFetchListCourseNotRegistered(user.taiKhoan));
-                dispatch(actFetchListCourseWaiting(taiKhoanObj));
-                dispatch(actFetchListCourseRegistered(taiKhoanObj));
+                // showModal();
+                // setUser(user);
+                // dispatch(actFetchListCourseNotRegistered(user.taiKhoan));
+                // dispatch(actFetchListCourseWaiting(taiKhoanObj));
+                // dispatch(actFetchListCourseRegistered(taiKhoanObj));
+                dispatch({type:"CONTENT_MODAL",Component:<p>hehehe</p>})
               }}
               className="text-warning me-3"
               style={{ fontSize: "25px", cursor: "pointer" }}
