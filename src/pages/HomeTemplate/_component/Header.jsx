@@ -28,7 +28,25 @@ export default function HeaderHomePage() {
       navigate("/find-course");      
     }
     
-  }  
+  }
+  const handleLogout=()=>{
+    localStorage.removeItem("User");
+    navigate("/login")
+  }
+  const renderRegisterLoginButton=()=>{
+    if(localStorage.getItem("User")){
+      return <li className="nav-item mx-auto my-2">  
+      <button className="btn btn-outline-warning mx-1 d-md-none d-lg-inline-block" onClick={()=>navigate("/profile")}>Thông tin cá nhân</button>                      
+      <button className="btn btn-warning mx-1 d-md-none d-lg-inline-block" onClick={handleLogout}>Đăng xuất</button>
+    </li>  
+    }
+    else{
+      return <li className="nav-item mx-auto my-2">                                      
+      <button className="btn btn-outline-warning mx-1 d-md-none d-lg-inline-block" onClick={()=>navigate("/register")}>Đăng ký</button>                    
+      <button className="btn btn-outline-warning mx-1 d-md-none d-lg-inline-block" onClick={()=>navigate("/login")}>Đăng nhập</button>           
+    </li>  
+    }
+  }
   if(loading) return <Loader/>
   return (
     <>
@@ -63,14 +81,7 @@ export default function HeaderHomePage() {
             <li className="nav-item mx-auto my-2">
               <input type="text" className="search-box py-2 px-3" placeholder='Tìm kiếm khoá học' onChange={handleOnChange}/>
             </li>  
-            <li className="nav-item mx-auto my-2">              
-                <button className="btn btn-outline-warning mx-1 d-md-none d-lg-inline-block">
-                  Sign up
-                </button>
-                <button className="btn btn-outline-warning mx-1 d-md-none d-lg-inline-block">
-                  Login
-                </button>             
-            </li>      
+            {renderRegisterLoginButton()}     
           </ul>          
         </div>        
       </nav>     

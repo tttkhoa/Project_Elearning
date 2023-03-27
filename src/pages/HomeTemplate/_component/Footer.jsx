@@ -32,7 +32,7 @@ export default function FooterHomePage() {
         </div>
         <div className='col-xl-6 col-lg-6 col-sm-12 my-3 px-5 right-content'>
           <form>          
-              <h3 style={{"color":"#fec235"}}>ĐĂNG KÍ TƯ VẤN</h3>
+              <h3 className='text-center' style={{"color":"#fec235"}}>ĐĂNG KÍ TƯ VẤN</h3>
                 <div>
                   <input type="text" name='fullname' className='' placeholder='Họ và tên *'/>
                 </div>

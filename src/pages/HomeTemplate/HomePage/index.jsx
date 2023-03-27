@@ -14,11 +14,12 @@ export default function HomePage() {
       dispatch(actFetchCourseHomePage());
       // eslint-disable-next-line 
     },[])    
-    const renderCourse=()=>{
-      return data?.map((course)=>{
-        return <Course key={course.maKhoaHoc} course={course}/>
-      })
-    }
+    const renderCourse=()=>{      
+        return data.map((course)=>{
+          return <Course key={course.maKhoaHoc} course={course}/>
+        })
+      }     
+    
     if(loading) return <Loader/>
     return (
       <>
@@ -28,7 +29,7 @@ export default function HomePage() {
         <div className="d-flex justify-content-center mt-4">                
           <div className="container">
               <h1 className='text-center my-3'>CÁC KHOÁ HỌC NỔI BẬT</h1>
-              <div className='row'>{renderCourse()}</div>  
+              {/* <div className='row'>{renderCourse()}</div>   */}
           </div>            
         </div>          
       </>

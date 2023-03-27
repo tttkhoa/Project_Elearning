@@ -38,6 +38,10 @@ const routes = [
         path: "list-course-bycategory/:id",
         element: lazy(() => import("../pages/HomeTemplate/ListCourseByCategory"))
       },
+      {
+        path: "edit",
+        element: lazy(() => import("../pages/HomeTemplate/EditPage"))
+      },
     ],
   },
   {

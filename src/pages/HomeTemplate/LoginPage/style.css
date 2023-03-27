@@ -1,0 +1,16 @@
+.input-group-prepend span{
+    width: 50px;
+    background-color: #FFC312;
+    color: black;
+    border:0 !important;
+}
+.input-username,.input-password{
+    border-radius: 5px;
+    border: 1.5px solid gray;
+    line-height: 37px;
+
+
+} 
+    
+    
+    
