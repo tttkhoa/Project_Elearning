@@ -4,6 +4,7 @@ import { Button, Checkbox, Form, Input, Select } from "antd";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { actAddUser, actFetchLoaiNguoiDung } from "./duck/action";
+import * as Yup from "yup"
 
 export default function AddUserPage() {
   const onFinish = (values) => {
@@ -37,6 +38,12 @@ export default function AddUserPage() {
         maNhom: "GP03",
         email: ""
     },
+    validationSchema:Yup.object({
+      taiKhoan:Yup.string().required("Tài khoản không được để trống!").min(3,"Tài khoản phải trên 3 kí tự"),
+      matKhau:Yup.string().required("Mật khẩu không được để trống!").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{0,}$/,"Vui lòng mật khẩu có chữ thường,chữ in hoa,số và kí tự đặc biệt!"),
+      email:Yup.string().required("Email không được để trống!").matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,"Vui lòng nhập đúng dịnh dạng email!"),
+      soDT:Yup.string().required("Số điện thoại không được để trống!").matches(/^[0-9]+$/,"Vui lòng nhập số điện thoại hợp lệ!")
+    }),
     onSubmit:(values) => {
         console.log(values)
         dispatch(actAddUser(values))
@@ -91,7 +98,8 @@ export default function AddUserPage() {
         <div className="row">
           <div className="col-6">
             <Form.Item label="Tài khoản">
-              <Input name="taiKhoan" onChange={formik.handleChange}  />
+              <Input name="taiKhoan" onChange={formik.handleChange} onBlur={formik.handleBlur}  />
+              {formik.touched.taiKhoan && formik.errors.taiKhoan && (<p className="alert alert-danger mt-2 mb-0">{formik.errors.taiKhoan}</p>)}
             </Form.Item>
 
             <Form.Item label="Mật khẩu">

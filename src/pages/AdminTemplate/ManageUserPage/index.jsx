@@ -14,7 +14,6 @@ import {
   actFetchListCourseRegistered,
   actFetchListCourseWaiting,
 } from "./RegisterCourseModal/duck/action";
-import { taiKhoan } from "../../../_core/models/taiKhoanObj.jsx";
 
 export default function ManageUserPage() {
   const dispatch = useDispatch();
@@ -114,14 +113,14 @@ export default function ManageUserPage() {
             <span
               key={3}
               onClick={() => {
-                const taiKhoanObj = new taiKhoan();
-                taiKhoanObj.taiKhoan = user.taiKhoan;
-                // showModal();
-                // setUser(user);
-                // dispatch(actFetchListCourseNotRegistered(user.taiKhoan));
-                // dispatch(actFetchListCourseWaiting(taiKhoanObj));
-                // dispatch(actFetchListCourseRegistered(taiKhoanObj));
-                dispatch({type:"CONTENT_MODAL",Component:<p>hehehe</p>})
+                const taiKhoanObj = {
+                  taiKhoan:user.taiKhoan
+                }
+                showModal();
+                setUser(user);
+                dispatch(actFetchListCourseNotRegistered(user.taiKhoan));
+                dispatch(actFetchListCourseWaiting(taiKhoanObj));
+                dispatch(actFetchListCourseRegistered(taiKhoanObj));
               }}
               className="text-warning me-3"
               style={{ fontSize: "25px", cursor: "pointer" }}

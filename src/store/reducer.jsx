@@ -13,8 +13,7 @@ import { listCourseReducerHome } from "../pages/HomeTemplate/ListCoursePage/duck
 import { courseHomepageReducer } from "../pages/HomeTemplate/HomePage/duck/reducer";
 import { detailCourseReducer } from "../pages/HomeTemplate/DetailCoursePage/duck/reducer";
 import { listCourseByCategoryReducer } from "../pages/HomeTemplate/ListCourseByCategory/duck/reducer";
-import TestModalReducer from "../pages/Modal/store/reducer";
 
-const rootReducer = combineReducers({listUserReducer,authLoginReducer,addUserReducer,updateUserReducer,listCourseReducerAdmin,addCourseReducer,updatCourseReducer,registerCourseReducer,registerCourseByUserReducer,courseMenuReducer,listCourseReducerHome,courseHomepageReducer,detailCourseReducer,listCourseByCategoryReducer,TestModalReducer})
+const rootReducer = combineReducers({listUserReducer,authLoginReducer,addUserReducer,updateUserReducer,listCourseReducerAdmin,addCourseReducer,updatCourseReducer,registerCourseReducer,registerCourseByUserReducer,courseMenuReducer,listCourseReducerHome,courseHomepageReducer,detailCourseReducer,listCourseByCategoryReducer})
 
 export default rootReducer;
