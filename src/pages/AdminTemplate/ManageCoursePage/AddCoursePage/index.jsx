@@ -72,7 +72,6 @@ export default function AddCoursePage() {
         "Danh mục khóa học không được để trống!"
       ),
       taiKhoanNguoiTao: Yup.string().required("Người tạo không được để trống!"),
-      hinhAnh: Yup.string().required("Hình ảnh khóa học không được để trống!"),
     }),
     onSubmit: (values) => {
       console.log(values);
