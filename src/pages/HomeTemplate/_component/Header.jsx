@@ -16,7 +16,7 @@ export default function HeaderHomePage() {
       // eslint-disable-next-line
   },[]);
   const renderCourseMenu=()=>{
-      return data?.map((item)=>{
+      return data&&data.map((item)=>{
         return <li className="dropdown-subitem" key={item.maDanhMuc}><NavLink className={({isActive})=>isActive?"dropdown-item rounded":"dropdown-item"} to={`/list-course-bycategory/${item.maDanhMuc}`}>{item.tenDanhMuc}</NavLink></li>
       })
   }
@@ -36,7 +36,7 @@ export default function HeaderHomePage() {
   const renderRegisterLoginButton=()=>{
     if(localStorage.getItem("User")){
       return <li className="nav-item mx-auto my-2">  
-      <button className="btn btn-outline-warning mx-1 d-md-none d-lg-inline-block" onClick={()=>navigate("/profile")}>Thông tin cá nhân</button>                      
+      <button className="btn btn-outline-warning mx-1 d-md-none d-lg-inline-block" onClick={()=>navigate("/profile")}>Thông tin</button>                      
       <button className="btn btn-warning mx-1 d-md-none d-lg-inline-block" onClick={handleLogout}>Đăng xuất</button>
     </li>  
     }

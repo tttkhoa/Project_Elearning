@@ -1,6 +1,5 @@
 import { Route } from "react-router-dom";
 import { lazy } from "react";
-
 const routes = [
   {
     path: "",
@@ -16,15 +15,16 @@ const routes = [
       },
       {
         path: "register",
-        element: lazy(() => import("../pages/HomeTemplate/RegisterPage")),
+        element: lazy(() => import("../pages/HomeTemplate/RegisterAccountPage")),
       },
       {
-        path: "profile",
+        path: "profile",      
         element: lazy(() => import("../pages/HomeTemplate/ProfilePage")),
       },
       {
-        path: "detail-course/:id",
+        path: "detail-course/:id",        
         element: lazy(() => import("../pages/HomeTemplate/DetailCoursePage")),
+        
       },
       {
         path: "list-course",

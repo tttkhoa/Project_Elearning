@@ -1,31 +1,15 @@
-.nav-pills .nav-item .nav-link {
-    background-color: #e5e5d4;
-    color: black;
-  }
+.nav-link{
+  color: #fec235!important;
   
-  .nav-pills .nav-item .nav-link.active {
-    color: #fbfbf8;
-    background-color: #ffc207;
-  }
-  
-  .tab-content {
-    border: 1px solid #dee2e6;   
-    
-  }
-  
-  .tab-content .tab-pane {
-    background-color: #FFF;
-    color: #0080FF;
-    min-height: 200px;
-    height: auto;
-  }
- .page-item.active .page-link{
-  background-color: #ffc207;
-  border-color: #b1b0af;
-  color: white;
- }
- .page-item .page-link{
-  background-color: rgb(227, 224, 224);
-  color: black;
-  border-color: rgb(204, 202, 202);
- }
+}
+.nav-link.active{
+  color: black!important;
+  background-color: #fec235!important;
+}
+.tab-content {
+  border: 1px solid #dee2e6;
+  background-color: aliceblue!important;
+}
+.tab-pane.active{
+  background-color: white!important;
+}

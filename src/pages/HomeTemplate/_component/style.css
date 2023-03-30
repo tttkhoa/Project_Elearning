@@ -4,6 +4,15 @@
     padding: 0;
     margin: 0;
 }
+/* .navbar-top-fixed{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    margin-bottom: 150px;
+    
+} */
 .nav-menu .nav-item:hover a{
     background-color: orange!important;
     color:white!important;

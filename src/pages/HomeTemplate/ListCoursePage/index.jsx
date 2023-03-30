@@ -3,9 +3,10 @@ import { useSelector,useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import Loader from '../_component/Loader';
 import { actFetchListCourse } from './duck/action';
-import Course from './Course';
+import Course from '../_component/Course';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { actFetchProfile } from '../ProfilePage/duck/action';
 export default function ListCoursePage(){    
   const loading=useSelector((state)=>state.listCourseReducerHome.loading);
   const data=useSelector((state)=>state.listCourseReducerHome.data);
@@ -13,6 +14,7 @@ export default function ListCoursePage(){
   const [page,setPage]=useState(1);  
   useEffect(()=>{
     dispatch(actFetchListCourse(page)); 
+    dispatch(actFetchProfile());
     // eslint-disable-next-line
   },[page]);
   const renderPagination=()=>{

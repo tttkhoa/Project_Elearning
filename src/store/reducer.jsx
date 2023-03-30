@@ -15,7 +15,7 @@ import { detailCourseReducer } from "../pages/HomeTemplate/DetailCoursePage/duck
 import { listCourseByCategoryReducer } from "../pages/HomeTemplate/ListCourseByCategory/duck/reducer";
 import { findCourseReducer } from "../pages/HomeTemplate/FindCoursePage/duck/reducer";
 import { loginHomeReducer } from "../pages/HomeTemplate/LoginPage/duck/reducer";
-import { registerHomeReducer } from "../pages/HomeTemplate/RegisterPage/duck/reducer";
+import { registerHomeReducer } from "../pages/HomeTemplate/RegisterAccountPage/duck/reducer";
 import { profileHomeReducer } from "../pages/HomeTemplate/ProfilePage/duck/reducer";
 import { updateProfileHomeReducer } from "../pages/HomeTemplate/EditPage/duck/reducer";
 const rootReducer = combineReducers({

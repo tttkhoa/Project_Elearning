@@ -6,7 +6,7 @@ export const actFetchLoginHome=(user,navigate)=>{
         api.post("QuanLyNguoiDung/DangNhap",user)
         .then((result)=>{
             if(result.data.maLoaiNguoiDung === "GV"){
-                localStorage.setItem("UserAdmin",JSON.stringify(result.data))
+                localStorage.setItem("User",JSON.stringify(result.data))
                 dispatch(actSuccessLoginHome(result.data))
                 navigate("/admin",{replace:true})
             }

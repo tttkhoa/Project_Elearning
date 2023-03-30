@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser,faKey } from '@fortawesome/free-solid-svg-icons'
 import { useSelector,useDispatch } from "react-redux";
 import { actFetchLoginHome } from "./duck/action";
+
 export default function LoginPage() {
   const navigate=useNavigate();
   const error=useSelector((state)=>state.loginHomeReducer.error);
@@ -21,8 +22,10 @@ export default function LoginPage() {
 
   const handleSubmit = (event) => {
       event.preventDefault() 
-      dispatch(actFetchLoginHome(account,navigate));      
+      dispatch(actFetchLoginHome(account,navigate)); 
+           
   } 
+  
   const renderNotification = () => {    
     return (
       error && (

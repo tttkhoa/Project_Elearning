@@ -2,8 +2,9 @@ import React from 'react'
 import { useSelector,useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { actFetchFindCourse } from './duck/action';
+import { actFetchProfile } from '../ProfilePage/duck/action';
 import Loader from '../_component/Loader';
-import Course from './Course';
+import Course from '../_component/Course';
 export default function FindCoursePage() {
   const loading=useSelector((state)=>state.findCourseReducer.loading);
   const keyword=useSelector((state)=>state.findCourseReducer.keyword)
@@ -12,6 +13,7 @@ export default function FindCoursePage() {
   useEffect(()=>{
     // eslint-disable-next-line
     dispatch(actFetchFindCourse());
+    dispatch(actFetchProfile());
   },[]) 
   const renderFindCourseList=()=>{
     if(data&&keyword){

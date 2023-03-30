@@ -5,7 +5,7 @@ import { actFetchUpdateProfile } from './duck/action';
 import Loader from '../_component/Loader';
 export default function EditPage() {
     const loading=useSelector((state)=>state.updateProfileHomeReducer.loading);
-    const error=useSelector((state)=>state.updateProfileHomeReducer.error);
+    
     const dispatch=useDispatch();
     useEffect(()=>{
         dispatch(actFetchUpdateProfile());
