@@ -25,7 +25,9 @@ export default function RegisterPage() {
   }
   const handleOnSubmit=(event)=>{
     event.preventDefault();
-    dispatch(actFetchRegisterHome(state,navigate));        
+    dispatch(actFetchRegisterHome(state,navigate));
+    alert("Đăng ký thành công");   
+       
     
   }
   
