@@ -11,6 +11,7 @@ export const actAddUser = (user) => {
       })
       .catch((error) => {
         console.log(error?.reponse)
+        dispatch(actAddUserFail(error?.response))
       });
 
   };
@@ -38,6 +39,12 @@ export const actAddUserSuccess = (data) => {
   };
 };
 
+export const actAddUserFail = (error) => {
+  return {
+    type:ActionType.ADD_USER_FAIL,
+    payload:error
+  }
+}
 
 /**
  * Async - Await

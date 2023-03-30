@@ -25,6 +25,7 @@ export const actDeleteCourse = (id) => {
                 payload:result.data
             })
             dispatch(actFetchListCourse())
+            alert('Xóa khóa học thành công!')
         }
         catch(error){
             console.log(error?.response)

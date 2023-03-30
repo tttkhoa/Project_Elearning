@@ -2,11 +2,12 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Table, Input, Button, Modal, Select, Form } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
-import { actCancelCourse, actRegisterCourse } from "./duck/action";
+import { actCancelCourse, actFetchListCourseRegistered, actRegisterCourse } from "./duck/action";
 import { actFetchListCourse } from "../../ManageCoursePage/duck/action";
 
 export default function RegisterCourseModal(props) {
   const dispatch = useDispatch()
+
 
   const columnsListCourseWaiting = [
     {

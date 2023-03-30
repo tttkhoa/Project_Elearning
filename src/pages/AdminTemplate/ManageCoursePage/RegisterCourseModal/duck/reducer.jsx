@@ -4,6 +4,8 @@ const initialState = {
   listUserNotRegistered: null,
   listUserWaiting: null,
   listUserRegistered: null,
+  courseRegister2:null,
+  cancelCourse2:null,
 };
 
 const registerCourseByUserReducer = (state = initialState, action) => {
@@ -19,6 +21,14 @@ const registerCourseByUserReducer = (state = initialState, action) => {
 
     case ActionType.LIST_USER_REGISTERED: {
       state.listUserRegistered = action.payload;
+      return { ...state };
+    }
+    case ActionType.COURSE_REGISTER2: {
+      state.courseRegister2 = action.payload;
+      return { ...state };
+    }
+    case ActionType.CANCEL_REGISTER2: {
+      state.cancelCourse2 = action.payload;
       return { ...state };
     }
     default:
