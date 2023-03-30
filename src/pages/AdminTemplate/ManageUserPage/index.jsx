@@ -14,7 +14,6 @@ import {
   actFetchListCourseRegistered,
   actFetchListCourseWaiting,
 } from "./RegisterCourseModal/duck/action";
-import { taiKhoan } from "../../../_core/models/taiKhoanObj.jsx";
 
 export default function ManageUserPage() {
   const dispatch = useDispatch();
@@ -114,8 +113,9 @@ export default function ManageUserPage() {
             <span
               key={3}
               onClick={() => {
-                const taiKhoanObj = new taiKhoan();
-                taiKhoanObj.taiKhoan = user.taiKhoan;
+                const taiKhoanObj = {
+                  taiKhoan:user.taiKhoan
+                }
                 showModal();
                 setUser(user);
                 dispatch(actFetchListCourseNotRegistered(user.taiKhoan));

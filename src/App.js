@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import Loader from "../src/Components/Loader"
 import renderRoutes from "./routes"
 
-
 function App() {
   return (
     <Suspense fallback={<Loader/>}>

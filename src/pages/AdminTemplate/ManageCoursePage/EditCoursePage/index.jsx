@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import dayjs from "dayjs";
 import { actFetchCategoryCourse } from "../AddCoursePage/duck/action";
 import { actUpdateCourse } from "./UpdateCourse/action";
+import * as Yup from "yup";
 
 export default function EditCoursePage() {
   const onFinish = (values) => {
@@ -23,55 +24,70 @@ export default function EditCoursePage() {
     console.log("Failed:", errorInfo);
   };
 
-  const [image,setImg] = useState('')
+  const [image, setImg] = useState("");
   const dispatch = useDispatch();
   const { categoryCourse } = useSelector((state) => state.addCourseReducer);
   const listUser = useSelector((state) => state.listUserReducer.data);
 
   const convertNguoiTao = () => {
-    let listUserGV = listUser?.filter(user => user.maLoaiNguoiDung === "GV")
-    return listUserGV?.map((user,index) => {
-         return { value: user.hoTen, label: user.hoTen };
-    })
-  }
+    let listUserGV = listUser?.filter((user) => user.maLoaiNguoiDung === "GV");
+    return listUserGV?.map((user, index) => {
+      return { value: user.hoTen, label: user.hoTen };
+    });
+  };
 
   useEffect(() => {
-    dispatch(actFetchCategoryCourse())
+    dispatch(actFetchCategoryCourse());
   }, []);
 
-  const data = JSON.parse(localStorage.getItem('courseEdit'))
+  const data = JSON.parse(localStorage.getItem("courseEdit"));
   // console.log(data)
 
   const formik = useFormik({
-    enableReinitialize:true,
+    enableReinitialize: true,
     initialValues: {
       maKhoaHoc: data.maKhoaHoc,
       tenKhoaHoc: data.tenKhoaHoc,
       moTa: data.moTa,
       luotXem: data.luotXem,
       danhGia: 10,
-      hinhAnh:null,
+      hinhAnh: null,
       maNhom: "GP01",
       ngayTao: data.ngayTao,
       maDanhMucKhoaHoc: data.danhMucKhoaHoc.tenDanhMucKhoaHoc,
       taiKhoanNguoiTao: data.nguoiTao.hoTen,
     },
+    validationSchema: Yup.object({
+      maKhoaHoc: Yup.string()
+        .required("Mã khóa học không được để  trống!")
+        .min(3, "Mã khóa học phải trên 3 kí tự!"),
+      tenKhoaHoc: Yup.string()
+        .required("Tên học không được để  trống!")
+        .min(3, "Mã khóa học phải trên 3 kí tự!"),
+      moTa: Yup.string().required("Mô tả không được để trống!"),
+      danhGia: Yup.string().required("Đánh giá không được để trống"),
+      luotXem: Yup.string().required("Lượt xem không được để trống"),
+      ngayTao: Yup.string().required("Ngày tạo không được để trống!"),
+      maDanhMucKhoaHoc: Yup.string().required(
+        "Danh mục khóa học không được để trống!"
+      ),
+      taiKhoanNguoiTao: Yup.string().required("Người tạo không được để trống!"),
+    }),
     onSubmit: (values) => {
       console.log(values);
-      let formData = new FormData()
+      let formData = new FormData();
       for (let key in values) {
-        if (key != 'hinhAnh'){
-          formData.append(key,values[key])
-        }else {
-          if (values.hinhAnh != null){
-          formData.append('file',values.hinhAnh,values.hinhAnh.name)
+        if (key != "hinhAnh") {
+          formData.append(key, values[key]);
+        } else {
+          if (values.hinhAnh != null) {
+            formData.append("file", values.hinhAnh, values.hinhAnh.name);
+          }
         }
       }
-    }
-      dispatch(actUpdateCourse(formData))
+      dispatch(actUpdateCourse(formData));
     },
   });
-
 
   const handleChange = (value) => {
     console.log(`selected ${value}`);
@@ -83,8 +99,8 @@ export default function EditCoursePage() {
     };
   };
   const handleChangeDatePicker = (value) => {
-    let ngayTao = dayjs(value).format("DD/MM/YYYY")
-    formik.setFieldValue("ngayTao",ngayTao);
+    let ngayTao = dayjs(value).format("DD/MM/YYYY");
+    formik.setFieldValue("ngayTao", ngayTao);
   };
 
   const handleChangetaiKhoanNguoiTao = (value) => {
@@ -96,16 +112,22 @@ export default function EditCoursePage() {
   };
 
   const handleChangeFile = async (e) => {
-    let file = e.target.files[0]
-    if(file.type === "image/png" || file.type === "image/jpeg"||  file.type === "image/gif"||  file.type === "image/png" || file.type === "image/jpg"){
-      await formik.setFieldValue('hinhAnh',file)
+    let file = e.target.files[0];
+    if (
+      file.type === "image/png" ||
+      file.type === "image/jpeg" ||
+      file.type === "image/gif" ||
+      file.type === "image/png" ||
+      file.type === "image/jpg"
+    ) {
+      await formik.setFieldValue("hinhAnh", file);
       let reader = new FileReader();
-      reader.readAsDataURL(file)
+      reader.readAsDataURL(file);
       reader.onload = (e) => {
-        setImg(e.target.result)
-      }
+        setImg(e.target.result);
+      };
     }
-  } 
+  };
 
   return (
     <div className="container mt-3" style={{ backgroundColor: "white" }}>
@@ -142,14 +164,34 @@ export default function EditCoursePage() {
         <div className="row">
           <div className="col-6">
             <Form.Item label="Mã khóa học">
-              <Input name="maKhoaHoc" onChange={formik.handleChange} value={formik.values.maKhoaHoc} />
+              <Input
+                name="maKhoaHoc"
+                onChange={formik.handleChange}
+                value={formik.values.maKhoaHoc}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.maKhoaHoc && formik.errors.maKhoaHoc && (
+                <p className="alert alert-danger mt-2 mb-0">
+                  {formik.errors.maKhoaHoc}
+                </p>
+              )}
             </Form.Item>
 
             <Form.Item label="Tên khóa học">
-              <Input name="tenKhoaHoc" onChange={formik.handleChange} value={formik.values.tenKhoaHoc} />
+              <Input
+                name="tenKhoaHoc"
+                onChange={formik.handleChange}
+                value={formik.values.tenKhoaHoc}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.tenKhoaHoc && formik.errors.tenKhoaHoc && (
+                <p className="alert alert-danger mt-2 mb-0">
+                  {formik.errors.tenKhoaHoc}
+                </p>
+              )}
             </Form.Item>
 
-            <Form.Item label="Danh mục khóa học" >
+            <Form.Item label="Danh mục khóa học">
               <Select
                 options={categoryCourse?.map((item, index) => {
                   return { value: item.maDanhMuc, label: item.tenDanhMuc };
@@ -164,12 +206,22 @@ export default function EditCoursePage() {
               <DatePicker
                 format={"DD/MM/YYYY"}
                 onChange={handleChangeDatePicker}
-                defaultValue={dayjs(formik.values.ngayTao,"DD/MM/YYYY")}
+                defaultValue={dayjs(formik.values.ngayTao, "DD/MM/YYYY")}
               />
             </Form.Item>
 
             <Form.Item label="Mô tả">
-              <Input name="moTa" onChange={formik.handleChange} value={formik.values.moTa} />
+              <Input
+                name="moTa"
+                onChange={formik.handleChange}
+                value={formik.values.moTa}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.moTa && formik.errors.moTa && (
+                <p className="alert alert-danger mt-2 mb-0">
+                  {formik.errors.moTa}
+                </p>
+              )}
             </Form.Item>
           </div>
           <div className="col-6">
@@ -179,7 +231,14 @@ export default function EditCoursePage() {
                 min={1}
                 max={10}
                 value={formik.values.danhGia}
+                onBlur={formik.handleBlur}
+                name="danhGia"
               />
+              {formik.touched.danhGia && formik.errors.danhGia && (
+                <p className="alert alert-danger mt-2 mb-0">
+                  {formik.errors.danhGia}
+                </p>
+              )}
             </Form.Item>
 
             <Form.Item label="Lượt xem">
@@ -188,7 +247,14 @@ export default function EditCoursePage() {
                 min={1}
                 max={100}
                 value={formik.values.luotXem}
+                name="luotXem"
+                onBlur={formik.handleBlur}
               />
+              {formik.touched.luotXem && formik.errors.luotXem && (
+                <p className="alert alert-danger mt-2 mb-0">
+                  {formik.errors.luotXem}
+                </p>
+              )}
             </Form.Item>
 
             <Form.Item label="Người tạo">
@@ -201,8 +267,17 @@ export default function EditCoursePage() {
             </Form.Item>
 
             <Form.Item label="Hình ảnh">
-            <input type="file" onChange={handleChangeFile} accept="image/png,image/jpeg,image/gif,image,png"  />
-            <img className="my-2" alt="" src={image === "" ? data.hinhAnh : image} style={{width:200,height:200}} />
+              <input
+                type="file"
+                onChange={handleChangeFile}
+                accept="image/png,image/jpeg,image/gif,image,png"
+              />
+              <img
+                className="my-2"
+                alt=""
+                src={image === "" ? data.hinhAnh : image}
+                style={{ width: 200, height: 200 }}
+              />
             </Form.Item>
           </div>
         </div>
@@ -210,7 +285,7 @@ export default function EditCoursePage() {
         <Form.Item
           style={{ textAlign: "left", marginTop: "30px", marginLeft: "200px" }}
         >
-          <Button  htmlType="submit" className="btn-warning me-3">
+          <Button htmlType="submit" className="btn-warning me-3">
             Cập nhật
           </Button>
         </Form.Item>

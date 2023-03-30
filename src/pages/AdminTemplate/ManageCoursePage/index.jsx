@@ -10,7 +10,6 @@ import {
 import { actDeleteCourse, actFetchListCourse } from "./duck/action";
 import RegisterCourseModal from "./RegisterCourseModal";
 import { actFetchListUsereRegistered, actFetchListUserNotRegistered, actFetchListUserWaiting } from "./RegisterCourseModal/duck/action";
-import { maKhoaHocObj } from "../../../_core/models/maKhoaHocObj";
 
 export default function ManageCoursePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -105,8 +104,11 @@ export default function ManageCoursePage() {
               className="text-warning me-3"
               style={{ fontSize: "25px", cursor: "pointer" }}
               onClick = {() => {
-                const newMaKhoaHocObj = new maKhoaHocObj()
-                newMaKhoaHocObj.maKhoaHoc = course.maKhoaHoc
+                // const newMaKhoaHocObj = new maKhoaHocObj()
+                // newMaKhoaHocObj.maKhoaHoc = course.maKhoaHoc
+                const newMaKhoaHocObj = {
+                  maKhoaHoc:course.maKhoaHoc
+                }
                 showModal();
                 setCourse(course)
                 dispatch(actFetchListUserNotRegistered(newMaKhoaHocObj))
