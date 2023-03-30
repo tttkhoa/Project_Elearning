@@ -8,11 +8,11 @@ export default function Course(props) {
     const data=useSelector((state)=>state.profileHomeReducer.data);
     const error=useSelector((state)=>state.profileHomeReducer.error);
     const dispatch=useDispatch();
-    if(localStorage.getItem("User")){        
+    if(localStorage.getItem("UserAdmin")){        
         const { course } = props;    
         const info={
             maKhoaHoc:course.maKhoaHoc,
-            taiKhoan:JSON.parse(localStorage.getItem("User")).taiKhoan,
+            taiKhoan:JSON.parse(localStorage.getItem("UserAdmin")).taiKhoan,
         }    
         
         const handleOnClickRegister=()=>{            
