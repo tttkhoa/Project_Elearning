@@ -11,7 +11,7 @@ export const actFetchLoginHome=(user,navigate)=>{
                 navigate("/admin",{replace:true})
             }
             else if(result.data.maLoaiNguoiDung === "HV"){
-                localStorage.setItem("UserAdmin",JSON.stringify(result.data))
+                localStorage.setItem("User",JSON.stringify(result.data))
                 dispatch(actSuccessLoginHome(result.data))
                 navigate("/",{replace:true})               
             }            

@@ -5,14 +5,13 @@ import { actFetchRegisterCourse } from './duck/action';
 import { actFetchCancelCourse } from './duck/action';
 import { useDispatch, useSelector } from 'react-redux';
 export default function Course(props) {  
-    const data=useSelector((state)=>state.profileHomeReducer.data);
-    const error=useSelector((state)=>state.profileHomeReducer.error);
+    const data=useSelector((state)=>state.profileHomeReducer.data); 
     const dispatch=useDispatch();
-    if(localStorage.getItem("UserAdmin")){        
+    if(localStorage.getItem("User")){        
         const { course } = props;    
         const info={
             maKhoaHoc:course.maKhoaHoc,
-            taiKhoan:JSON.parse(localStorage.getItem("UserAdmin")).taiKhoan,
+            taiKhoan:JSON.parse(localStorage.getItem("User")).taiKhoan,
         }    
         
         const handleOnClickRegister=()=>{            
@@ -39,13 +38,7 @@ export default function Course(props) {
             }
             
         }    
-        const renderNotification = () => {    
-            return (
-              error && (
-                <div className="alert alert-danger d-block mx-auto my-3" style={{fontSize:"14px",width:"87%"}}>{error}</div>
-              )
-            );
-          };
+        
         return (
         <>
             <div className="col-xl-3 col-lg-4 col-sm-6 col-12 course-list mx-0">
@@ -63,7 +56,7 @@ export default function Course(props) {
                           <p>Lượt xem: {course.luotXem}</p>
                       </div>
                     </div>
-                    {renderNotification()}
+                    
                 </div> 
                
             </div>

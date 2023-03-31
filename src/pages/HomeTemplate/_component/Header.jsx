@@ -30,11 +30,11 @@ export default function HeaderHomePage() {
     
   }
   const handleLogout=()=>{
-    localStorage.removeItem("UserAdmin");
+    localStorage.removeItem("User");
     navigate("/login")
   }
   const renderRegisterLoginButton=()=>{
-    if(localStorage.getItem("UserAdmin")){
+    if(localStorage.getItem("User")){
       return <li className="nav-item mx-auto my-2">  
       <button className="btn btn-outline-warning mx-1 d-md-none d-lg-inline-block" onClick={()=>navigate("/profile")}>Thông tin</button>                      
       <button className="btn btn-warning mx-1 d-md-none d-lg-inline-block" onClick={handleLogout}>Đăng xuất</button>
