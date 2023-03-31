@@ -41,6 +41,7 @@ export const actDeletetUser = (userDelete) => {
       .then((result) => {
         dispatch(actDeleteUserSuccess(result.data))
         alert(`Xóa tài khoản ${userDelete} thành công!`)
+        dispatch(actFetchListUser())
       })
       .catch((error) => {
         console.log(error?.reponse)

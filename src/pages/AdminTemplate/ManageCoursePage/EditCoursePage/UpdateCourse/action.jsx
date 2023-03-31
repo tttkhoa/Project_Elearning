@@ -10,7 +10,11 @@ export const actUpdateCourse= (formData) => {
           alert(`Cập nhật khóa học thành công!`)
         })
         .catch((error) => {
-          console.log(error?.reponse)
+          console.log(error?.response)
+          dispatch({
+            type: ActionType.UPDATE_COURSE_FAIL,
+            payload: error?.response,
+          })
         });
     };
   };

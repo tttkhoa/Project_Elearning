@@ -2,8 +2,8 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Table, Input, Button, Modal, Select, Form } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
-import { actCancelCourse } from "../../ManageUserPage/RegisterCourseModal/duck/action";
-import { actRegisterCourse } from "../../ManageUserPage/RegisterCourseModal/duck/action";
+import { actRegisterCourse2 } from "./duck/action";
+import { actCancelCourse2 } from "./duck/action";
 
 export default function RegisterCourseModal(props) {
   const dispatch = useDispatch()
@@ -52,7 +52,7 @@ export default function RegisterCourseModal(props) {
                   taiKhoan:user.taiKhoan
                 }
                 console.log(newUserObj)
-                  dispatch(actRegisterCourse(newUserObj))
+                  dispatch(actRegisterCourse2(newUserObj))
               }}
               style={{ fontSize: "13px" }}
               className="text-success me-2"
@@ -71,7 +71,7 @@ export default function RegisterCourseModal(props) {
                   taiKhoan:user.taiKhoan
                 }
                 if (window.confirm(`Bạn có muốn hủy khóa học ${course.tenKhoaHoc} không?`)) {
-                  dispatch(actCancelCourse(newUserObj))
+                  dispatch(actCancelCourse2(newUserObj))
                 }
               }}
             >
@@ -131,7 +131,7 @@ export default function RegisterCourseModal(props) {
                   taiKhoan:user.taiKhoan
                 }
                 if (window.confirm(`Bạn có muốn hủy khóa học ${course.tenKhoaHoc} không?`)) {
-                  dispatch(actCancelCourse(newUserObj))
+                  dispatch(actCancelCourse2(newUserObj))
                 }
               }}
             >
@@ -170,7 +170,7 @@ export default function RegisterCourseModal(props) {
     onSubmit: (values) => {
       values.maKhoaHoc = course.maKhoaHoc
       console.log(values);
-      dispatch(actRegisterCourse(values))
+      dispatch(actRegisterCourse2(values))
     },
   });
 

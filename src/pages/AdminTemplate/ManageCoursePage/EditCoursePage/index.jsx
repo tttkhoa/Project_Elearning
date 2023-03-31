@@ -27,6 +27,7 @@ export default function EditCoursePage() {
   const [image, setImg] = useState("");
   const dispatch = useDispatch();
   const { categoryCourse } = useSelector((state) => state.addCourseReducer);
+  const {error} = useSelector((state) => state.updatCourseReducer)
   const listUser = useSelector((state) => state.listUserReducer.data);
 
   const convertNguoiTao = () => {
@@ -34,6 +35,14 @@ export default function EditCoursePage() {
     return listUserGV?.map((user, index) => {
       return { value: user.hoTen, label: user.hoTen };
     });
+  };
+
+  const renderNoti = () => {
+    return (
+      error && (
+        <div className="alert alert-danger d-inline-block">{error.data}</div>
+      )
+    );
   };
 
   useEffect(() => {
@@ -58,9 +67,6 @@ export default function EditCoursePage() {
       taiKhoanNguoiTao: data.nguoiTao.hoTen,
     },
     validationSchema: Yup.object({
-      maKhoaHoc: Yup.string()
-        .required("Mã khóa học không được để  trống!")
-        .min(3, "Mã khóa học phải trên 3 kí tự!"),
       tenKhoaHoc: Yup.string()
         .required("Tên học không được để  trống!")
         .min(3, "Mã khóa học phải trên 3 kí tự!"),
@@ -143,6 +149,7 @@ export default function EditCoursePage() {
 
       <form className="text-black rounded py-3 text-center bg-white">
         <h2>Chỉnh sửa khóa học</h2>
+        {renderNoti()}
       </form>
 
       <Form
@@ -168,13 +175,8 @@ export default function EditCoursePage() {
                 name="maKhoaHoc"
                 onChange={formik.handleChange}
                 value={formik.values.maKhoaHoc}
-                onBlur={formik.handleBlur}
+                disabled={true}
               />
-              {formik.touched.maKhoaHoc && formik.errors.maKhoaHoc && (
-                <p className="alert alert-danger mt-2 mb-0">
-                  {formik.errors.maKhoaHoc}
-                </p>
-              )}
             </Form.Item>
 
             <Form.Item label="Tên khóa học">

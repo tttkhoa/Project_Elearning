@@ -9,7 +9,7 @@ import {
 } from "@ant-design/icons";
 import { actDeleteCourse, actFetchListCourse } from "./duck/action";
 import RegisterCourseModal from "./RegisterCourseModal";
-import { actFetchListUsereRegistered, actFetchListUserNotRegistered, actFetchListUserWaiting } from "./RegisterCourseModal/duck/action";
+import { actFetchListUserRegistered, actFetchListUserNotRegistered, actFetchListUserWaiting } from "./RegisterCourseModal/duck/action";
 
 export default function ManageCoursePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -113,7 +113,7 @@ export default function ManageCoursePage() {
                 setCourse(course)
                 dispatch(actFetchListUserNotRegistered(newMaKhoaHocObj))
                 dispatch(actFetchListUserWaiting(newMaKhoaHocObj))
-                dispatch(actFetchListUsereRegistered(newMaKhoaHocObj))
+                dispatch(actFetchListUserRegistered(newMaKhoaHocObj))
               }}
             >
               <FileAddOutlined />

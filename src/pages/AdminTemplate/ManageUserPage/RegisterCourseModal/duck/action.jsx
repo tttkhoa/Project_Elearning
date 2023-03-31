@@ -25,6 +25,8 @@ export const actRegisterCourse = (course) => {
         type: ActionType.COURSE_REGISTER,
         payload: result.data,
       });
+      dispatch(actFetchListCourseRegistered(course))
+      dispatch(actFetchListCourseNotRegistered(course.taiKhoan))
       alert("Ghi danh khóa học thành công!");
     } catch (error) {
       console.log(error?.response);
@@ -71,6 +73,8 @@ export const actCancelCourse = (user) => {
         type: ActionType.CANCEL_REGISTER,
         payload: result.data,
       });
+      dispatch(actFetchListCourseRegistered(user))
+      dispatch(actFetchListCourseNotRegistered(user.taiKhoan))
       alert('Hủy ghi danh khóa học thành công!')
     } catch (error) {
       console.log(error?.response);

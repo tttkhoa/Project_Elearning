@@ -30,7 +30,7 @@ export default function AddCoursePage() {
 
   const [image, setImg] = useState("");
   const dispatch = useDispatch();
-  const { categoryCourse } = useSelector((state) => state.addCourseReducer);
+  const { categoryCourse,error } = useSelector((state) => state.addCourseReducer);
   const listUser = useSelector((state) => state.listUserReducer.data);
 
   const convertNguoiTao = () => {
@@ -38,6 +38,14 @@ export default function AddCoursePage() {
     return listUserGV?.map((user, index) => {
       return { value: user.hoTen, label: user.hoTen };
     });
+  };
+
+  const renderNoti = () => {
+    return (
+      error && (
+        <div className="alert alert-danger d-inline-block">{error.data}</div>
+      )
+    );
   };
 
   useEffect(() => {
@@ -142,6 +150,8 @@ export default function AddCoursePage() {
 
       <form className="text-black rounded py-3 text-center bg-white">
         <h2>Thêm mới khóa học</h2>
+        {renderNoti()}
+
       </form>
 
       <Form
