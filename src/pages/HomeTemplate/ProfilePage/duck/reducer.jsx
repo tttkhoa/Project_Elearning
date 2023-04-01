@@ -30,3 +30,18 @@ export const profileHomeReducer=(state=initialState,action)=>{
         }
     }
 }
+
+const inititalStateError={
+    error:null,
+}
+export const profileUpdateHomeReducer=(state=inititalStateError,action)=>{
+    switch(action.type){
+        case ActionType.UPDATE_PROFILE_FAIL:{      
+            state.error=null;
+            return{...state};
+        }
+        default:{
+            return{...state};
+        }
+    }
+}

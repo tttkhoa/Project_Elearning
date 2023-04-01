@@ -55,7 +55,7 @@ export default function HeaderHomePage() {
           <NavLink to=""><img src={require('./Image/cyber-logo.png')} width="200" alt="Logo" /></NavLink>
         </div>
         <button
-          className="navbar-button navbar-toggler d-lg-none"
+          className="navbar-button navbar-toggler d-xl-none"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#collapsibleNavId"
@@ -69,7 +69,7 @@ export default function HeaderHomePage() {
           className="navbar-menu collapse navbar-collapse"
           id="collapsibleNavId"
         >
-          <ul className="navbar-nav nav-menu mx-2 d-flex justify-content-between">            
+          <ul className="navbar-nav nav-menu mx-0 d-flex justify-content-between">            
             <li className="btn-group mx-auto">
               <button className="btn btn-outline-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <span className="navbar-toggler-icon"/> Khóa học đào tạo
@@ -78,7 +78,7 @@ export default function HeaderHomePage() {
                   {renderCourseMenu()}
               </ul>
             </li>
-            <li className="nav-item mx-auto my-2">
+            <li className="nav-item mx-auto my-2 search-input">
               <input type="text" className="search-box py-2 px-3" placeholder='Tìm kiếm khoá học' onChange={handleOnChange}/>
             </li>  
             {renderRegisterLoginButton()}     

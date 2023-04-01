@@ -16,13 +16,13 @@ export default function Course(props) {
         
         const handleOnClickRegister=()=>{            
             dispatch(actFetchRegisterCourse(info));
-            alert("Đăng kí thành công");
+            alert("Đăng kí thành công. Chờ hệ thống xác thực để hoàn tất đăng ký");
             this.forceUpdate();
             
         }    
         const handleOnClickCancel=()=>{
             dispatch(actFetchCancelCourse(info)); 
-            alert("Huỷ thành công"); 
+            alert("Huỷ đăng ký thành công"); 
             this.forceUpdate();                 
         }
        
