@@ -157,7 +157,10 @@ export default function ManageCoursePage() {
 
   const onChange = (pagination, filters, sorter, extra) => {};
 
-  const onSearch = (value) => {};
+  const onSearch = (value) => {
+    console.log(value)
+    dispatch(actFetchListCourse(value))
+  };
   const { Search } = Input;
 
   return (
