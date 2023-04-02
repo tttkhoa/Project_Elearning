@@ -24,7 +24,7 @@ export default function ProfilePage() {
     localStorage.setItem("Profile",JSON.stringify(data))
   }
   const localProfile=JSON.parse(localStorage.getItem("Profile"));
-    
+  
   const [profile,setProfile]=useState({
     taiKhoan: localProfile&&localProfile.taiKhoan,
     matKhau: localProfile&&localProfile.matKhau,
