@@ -2,9 +2,11 @@ import React from 'react'
 import { actFetchListCourseByCategory } from './duck/action';
 import { useSelector,useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import Course from './Course';
+import Course from '../_component/Course';
 import Loader from '../_component/Loader';
 import { useParams } from 'react-router-dom';
+import "../_component/Course/style.css";
+import { actFetchProfile } from '../ProfilePage/duck/action';
 export default function ListCourseByCategory() {
     const params=useParams();
     const loading=useSelector((state)=>state.listCourseByCategoryReducer.loading);
@@ -12,6 +14,7 @@ export default function ListCourseByCategory() {
     const dispatch=useDispatch();       
     useEffect(()=>{
       dispatch(actFetchListCourseByCategory(params.id)); 
+      dispatch(actFetchProfile());
       // eslint-disable-next-line
     },[params.id]);
     const renderCourse=()=>{
@@ -44,7 +47,6 @@ export default function ListCourseByCategory() {
             }
         }
     }    
-    console.log(params);
     if(loading) return <Loader/>
     return (
       <>

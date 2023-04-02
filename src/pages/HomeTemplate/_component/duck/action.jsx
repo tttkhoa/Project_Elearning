@@ -12,6 +12,7 @@ export const fetchCourseMenu=()=>{
         })
     }
 }
+
 export const actRequestCourseMenu=()=>{
     return{
         type:ActionType.COURSE_MENU_REQUEST,

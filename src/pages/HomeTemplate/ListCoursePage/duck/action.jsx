@@ -1,9 +1,9 @@
 import * as ActionType from "./type"
 import api from "../../../../utils/apiUtil";
-export const actFetchListCourse=()=>{
+export const actFetchListCourse=(page)=>{
     return(dispatch)=>{
         dispatch(actRequestListCourse());
-        api.get(`QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01`)
+        api.get(`QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang?page=${page}&pageSize=12&MaNhom=GP01`)
         .then((result)=>{
             dispatch(actSuccessListCourse(result.data));            
         })

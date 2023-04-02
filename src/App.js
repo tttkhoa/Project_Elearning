@@ -7,7 +7,7 @@ function App() {
   return (
     <Suspense fallback={<Loader/>}>
       <BrowserRouter>
-        <Routes>
+        <Routes>          
           <Route>
           {renderRoutes()}
           </Route>

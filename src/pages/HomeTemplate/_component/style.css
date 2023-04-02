@@ -4,6 +4,7 @@
     padding: 0;
     margin: 0;
 }
+
 .nav-menu .nav-item:hover a{
     background-color: orange!important;
     color:white!important;
@@ -31,13 +32,10 @@
     width: 264px;
     padding: 0;
     overflow: hidden;
-    
 }
 
-.dropdown-subitem:hover{
-   
-    background-color: rgb(240, 238, 235);
-    
+.dropdown-subitem:hover{   
+    background-color: rgb(240, 238, 235);    
 }
 .dropdown-subitem{
     border: 1px solid rgb(194, 190, 190);   
@@ -49,16 +47,37 @@
     border: 1px solid orange;
     border-radius: 7px;    
     margin-right: 10px;
-    width: 60%;
+    width: 70%;
     padding: 0 10px;
 }
-.input-register button:hover{
-    color:black;
-}
-.center-content input{
+
+.right-content input{
     border:1px solid orange;
     border-radius: 7px;
     margin: 5px 0;
     padding: 5px ;
+    width: 100%;
 
+}
+.right-content form{
+    margin: 0 auto;
+    width: 70%;
+}
+.right-content form button{
+    width: 100%;
+}
+.page-item.inactive{
+    color:black !important
+}
+.page-item.active a{
+    background-color: #fec235 !important;
+}
+.footer-word{
+    color:white;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+.search-input{
+    width: 235px;
 }
