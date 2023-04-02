@@ -31,6 +31,7 @@ export default function HeaderHomePage() {
   }
   const handleLogout=()=>{
     localStorage.removeItem("User");
+    localStorage.removeItem("Profile");
     navigate("/login")
   }
   const renderRegisterLoginButton=()=>{
