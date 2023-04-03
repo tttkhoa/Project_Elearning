@@ -157,10 +157,14 @@ export default function ManageCoursePage() {
 
   const onChange = (pagination, filters, sorter, extra) => {};
 
+  const onChangeSearch = (e) => {
+    dispatch(actFetchListCourse(e.target.value));
+  }
   const onSearch = (value) => {
     console.log(value)
     dispatch(actFetchListCourse(value))
   };
+
   const { Search } = Input;
 
   return (
@@ -183,6 +187,7 @@ export default function ManageCoursePage() {
         className="mb-3"
         placeholder="Search"
         onSearch={onSearch}
+        onChange={onChangeSearch}
         enterButton
       />
       <Table

@@ -161,6 +161,9 @@ export default function ManageUserPage() {
 
   const onChange = (pagination, filters, sorter, extra) => {};
 
+  const onChangeSearch = (e) => {
+    dispatch(actFetchListUser(e.target.value));
+  }
   const onSearch = (value) => {
     dispatch(actFetchListUser(value));
   };
@@ -187,6 +190,7 @@ export default function ManageUserPage() {
         placeholder="Search"
         onSearch={onSearch}
         enterButton
+        onChange={onChangeSearch}
       />
       <Table
         columns={columns}

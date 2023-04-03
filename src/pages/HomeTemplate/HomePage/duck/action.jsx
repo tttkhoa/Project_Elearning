@@ -1,33 +1,17 @@
 import * as ActionType from "./type";
 import api from "../../../../utils/apiUtil";
-// export const actFetchCourseHomePage=()=>{
-//     return(dispatch)=>{
-//         dispatch(actRequestCourseHomePage());
-//         api.get(`QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang?page=1&pageSize=8&MaNhom=GP01`)
-//         .then((result)=>{
-//             dispatch(actSucessCourseHomePage(result.data.items));
-//         })
-//         .catch((error)=>{
-//             dispatch(actFailCourseHomePage(error));
-//         })
-//     }
-// }
-
-export const actFetchCourseHomePage = (page) => {
-  return (dispatch) => {
-    dispatch(actRequestCourseHomePage());
-    api
-      .get(
-        `QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang?page=${page}&pageSize=8&MaNhom=GP01`
-      )
-      .then((result) => {
-        dispatch(actSucessCourseHomePage(result.data));
-      })
-      .catch((error) => {
-        dispatch(actFailCourseHomePage(error));
-      });
-  };
-};
+export const actFetchCourseHomePage=()=>{
+    return(dispatch)=>{
+        dispatch(actRequestCourseHomePage());
+        api.get(`QuanLyKhoaHoc/LayDanhSachKhoaHoc_PhanTrang?page=1&pageSize=8&MaNhom=GP01`)
+        .then((result)=>{
+            dispatch(actSucessCourseHomePage(result.data.items));
+        })
+        .catch((error)=>{
+            dispatch(actFailCourseHomePage(error));
+        })
+    }
+}
 
 export const actRequestCourseHomePage = () => {
   return {
