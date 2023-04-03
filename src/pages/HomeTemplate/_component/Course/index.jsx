@@ -16,23 +16,15 @@ export default function Course(props) {
         }    
         
         const handleOnClickRegister=()=>{            
-            dispatch(actFetchRegisterCourse(info));
-            this.forceUpdate();
+            dispatch(actFetchRegisterCourse(info));            
             alert("Đăng kí thành công. Chờ hệ thống xác thực để hoàn tất đăng ký");
-            
-             
-           
-           
+            this.forceUpdate();
             
         }    
-        const handleOnClickCancel=(e)=>{   
-            e.preventDefault();         
-            dispatch(actFetchCancelCourse(info));            
-            // this.forceUpdate(); 
+        const handleOnClickCancel=(e)=>{                      
+            dispatch(actFetchCancelCourse(info));           
             alert("Huỷ đăng ký thành công");
-            dispatch(actFetchProfile());
-            
-                                         
+            this.forceUpdate();           
         }
        
         const renderRegisterButton=()=>{
