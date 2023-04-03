@@ -56,8 +56,6 @@ export default function ProfilePage() {
       return <Course key={course.maKhoaHoc} course={course} />
     })
   }  
-  
-  console.log(profile);
   if (loading) return <Loader />;
   return (
     <div className="container mt-5">

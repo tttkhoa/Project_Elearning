@@ -4,7 +4,7 @@ import api from "../../../../../utils/apiUtil";
 export const actFetchRegisterCourse=(info)=>{
     return(dispatch)=>{
         dispatch(actRequestRegisterCourse());
-        api.post("QuanLyKhoaHoc/GhiDanhKhoaHoc",info)
+        api.post("QuanLyKhoaHoc/DangKyKhoaHoc",info)
         .then((result)=>{
             dispatch(actSuccessRegisterCourse(result.data));
         })
