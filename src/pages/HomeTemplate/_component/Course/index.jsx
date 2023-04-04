@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { actFetchRegisterCourse } from './duck/action';
 import { actFetchCancelCourse } from './duck/action';
 import { useDispatch, useSelector } from 'react-redux';
+import { actFetchProfile } from '../../ProfilePage/duck/action';
 export default function Course(props) {  
     const data=useSelector((state)=>state.profileHomeReducer.data); 
     const dispatch=useDispatch();
@@ -15,15 +16,15 @@ export default function Course(props) {
         }    
         
         const handleOnClickRegister=()=>{            
-            dispatch(actFetchRegisterCourse(info));
+            dispatch(actFetchRegisterCourse(info));            
             alert("Đăng kí thành công. Chờ hệ thống xác thực để hoàn tất đăng ký");
             this.forceUpdate();
             
         }    
-        const handleOnClickCancel=()=>{
-            dispatch(actFetchCancelCourse(info)); 
-            alert("Huỷ đăng ký thành công"); 
-            this.forceUpdate();                 
+        const handleOnClickCancel=(e)=>{                      
+            dispatch(actFetchCancelCourse(info));           
+            alert("Huỷ đăng ký thành công");
+            this.forceUpdate();           
         }
        
         const renderRegisterButton=()=>{
