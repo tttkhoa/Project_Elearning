@@ -14,8 +14,10 @@ import {
   actFetchListCourseRegistered,
   actFetchListCourseWaiting,
 } from "./RegisterCourseModal/duck/action";
+import { useMediaQuery } from "react-responsive";
 
 export default function ManageUserPage() {
+  const largeScreen = useMediaQuery({ query: "(max-width:1280px)" });
   const dispatch = useDispatch();
   const data = useSelector((state) => state.listUserReducer.data);
   const [user, setUser] = useState({});
@@ -35,7 +37,7 @@ export default function ManageUserPage() {
   }, []);
   // console.log(data);
   const columns = [
-    {
+    { 
       title: "Tài khoản",
       dataIndex: "taiKhoan",
       sorter: (a, b) => {
@@ -48,7 +50,7 @@ export default function ManageUserPage() {
       render: (text, user) => {
         return <Fragment>{user.taiKhoan}</Fragment>;
       },
-      width: "10%",
+      width: largeScreen ? "5%" : "15%" ,
     },
     {
       title: "Mật khẩu",
@@ -56,7 +58,7 @@ export default function ManageUserPage() {
       render: (text, user) => {
         return <Fragment>{user.matKhau}</Fragment>;
       },
-      width: "10%",
+      width: largeScreen ? "5%" : "15%",
     },
     {
       title: "Họ tên",
@@ -71,7 +73,7 @@ export default function ManageUserPage() {
       render: (text, user) => {
         return <Fragment>{user.hoTen}</Fragment>;
       },
-      width: "15%",
+      width: largeScreen ? "5%" : "15%",
     },
     {
       title: "Email",
@@ -87,7 +89,7 @@ export default function ManageUserPage() {
       render: (text, user) => {
         return <Fragment>{user.soDt}</Fragment>;
       },
-      width: "15%",
+      width: largeScreen ? "5%" : "10%",
     },
     {
       title: "Mã loại người dùng",
@@ -102,14 +104,14 @@ export default function ManageUserPage() {
       render: (text, user) => {
         return <Fragment>{user.maLoaiNguoiDung}</Fragment>;
       },
-      width: "16%",
+      width: largeScreen ? "5%" : "10%",
     },
     {
       title: "Action",
       dataIndex: "Action",
       render: (text, user) => {
         return (
-          <Fragment>
+          <Fragment >
             <span
               key={3}
               onClick={() => {
