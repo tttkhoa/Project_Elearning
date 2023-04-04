@@ -10,8 +10,10 @@ import {
 import { actDeleteCourse, actFetchListCourse } from "./duck/action";
 import RegisterCourseModal from "./RegisterCourseModal";
 import { actFetchListUserRegistered, actFetchListUserNotRegistered, actFetchListUserWaiting } from "./RegisterCourseModal/duck/action";
+import { useMediaQuery } from "react-responsive";
 
 export default function ManageCoursePage() {
+  const largeScreen = useMediaQuery({ query: "(max-width:1280px)" });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -75,7 +77,7 @@ export default function ManageCoursePage() {
           </Fragment>
         );
       },
-      width: "20%",
+      width: largeScreen ? "10%" : "20%",
     },
     {
       title: "Lượt xem",
