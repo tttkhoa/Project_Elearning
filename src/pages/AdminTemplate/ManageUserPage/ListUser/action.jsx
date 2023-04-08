@@ -6,7 +6,7 @@ export const actFetchListUser = (keyword="") => {
 
     if (keyword.trim() !== ''){
       api
-      .get(`QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=GP03&tuKhoa=${keyword}`)
+      .get(`QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=GP01&tuKhoa=${keyword}`)
       .then((result) => {
         dispatch(actListUserSuccess(result.data))
       })
@@ -15,7 +15,7 @@ export const actFetchListUser = (keyword="") => {
       });
     } else {
       api
-      .get(`QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=GP03`)
+      .get(`QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=GP01`)
       .then((result) => {
         dispatch(actListUserSuccess(result.data))
       })
@@ -41,6 +41,7 @@ export const actDeletetUser = (userDelete) => {
       .then((result) => {
         dispatch(actDeleteUserSuccess(result.data))
         alert(`Xóa tài khoản ${userDelete} thành công!`)
+        dispatch(actFetchListUser())
       })
       .catch((error) => {
         console.log(error?.reponse)

@@ -1,6 +1,5 @@
 import { Route } from "react-router-dom";
 import { lazy } from "react";
-
 const routes = [
   {
     path: "",
@@ -12,19 +11,20 @@ const routes = [
       },
       {
         path: "login",
-        element: lazy(() => import("../pages/HomeTemplate/LoginPage/")),
+        element: lazy(() => import("../pages/HomeTemplate/LoginPage")),
       },
       {
         path: "register",
-        element: lazy(() => import("../pages/HomeTemplate/RegisterPage")),
+        element: lazy(() => import("../pages/HomeTemplate/RegisterAccountPage")),
       },
       {
-        path: "profile",
+        path: "profile",      
         element: lazy(() => import("../pages/HomeTemplate/ProfilePage")),
       },
       {
-        path: "detail-course",
+        path: "detail-course/:id",        
         element: lazy(() => import("../pages/HomeTemplate/DetailCoursePage")),
+        
       },
       {
         path: "list-course",
@@ -33,6 +33,14 @@ const routes = [
       {
         path: "find-course",
         element: lazy(() => import("../pages/HomeTemplate/FindCoursePage"))
+      },
+      {
+        path: "list-course-bycategory/:id",
+        element: lazy(() => import("../pages/HomeTemplate/ListCourseByCategory"))
+      },
+      {
+        path: "edit",
+        element: lazy(() => import("../pages/HomeTemplate/EditPage"))
       },
     ],
   },

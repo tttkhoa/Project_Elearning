@@ -1,9 +1,10 @@
 import React from 'react'
-import { json, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Button, Checkbox, Form, Input, Select } from "antd";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { actUpdateUser } from './UpdateUser/action';
+import * as Yup from "yup"
 
 export default function EditUserPage() {
     const user = JSON.parse(localStorage.getItem('UserEdit'))
@@ -14,15 +15,8 @@ export default function EditUserPage() {
       const onFinishFailed = (errorInfo) => {
         console.log("Failed:", errorInfo);
       };
-    
+
       const dispatch = useDispatch()
-      const error = useSelector(state => state.updateUserReducer.error)
-    
-      const renderNoti = () => {
-            return (
-                error && <div className="alert alert-danger d-inline-block">{error.data}</div>
-            )
-      }
     
       const formik = useFormik({
         initialValues:{
@@ -34,11 +28,40 @@ export default function EditUserPage() {
             maNhom: "GP03",
             email: user.email,
         },
+        validationSchema: Yup.object({
+          matKhau: Yup.string()
+            .required("Mật khẩu không được để trống!")
+            .matches(
+              /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{0,}$/,
+              "Vui lòng mật khẩu có chữ thường,chữ in hoa,số và kí tự đặc biệt!"
+            ),
+          email: Yup.string()
+            .required("Email không được để trống!")
+            .matches(
+              /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+              "Vui lòng nhập đúng dịnh dạng email!"
+            ),
+          soDt: Yup.string()
+            .required("Số điện thoại không được để trống!")
+            .matches(/^[0-9]+$/, "Vui lòng nhập số điện thoại hợp lệ!"),
+          hoTen: Yup.string()
+            .required("Họ tên không được để trống!")
+            .matches(
+              "^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
+                "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
+                "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$",
+              "Vui lòng không nhập số!"
+            ),
+          maLoaiNguoiDung: Yup.string()
+            .required("Loại người dùng không được để trống!")
+        }),
         onSubmit:(values) => {
             console.log(values)
             dispatch(actUpdateUser(values))
         } 
       })
+
+      console.log(formik.errors.soDt)
     
       const handleChange = (value) => {
         console.log(`selected ${value}`);
@@ -62,8 +85,6 @@ export default function EditUserPage() {
 
       <form className="text-black rounded py-3 text-center bg-white">
         <h2>Chỉnh sửa người dùng</h2>
-        {renderNoti()}
-
       </form>
 
       <Form
@@ -92,20 +113,40 @@ export default function EditUserPage() {
             </Form.Item>
 
             <Form.Item label="Mật khẩu">
-              <Input name="matKhau"  onChange={formik.handleChange} value={formik.values.matKhau} />
+              <Input name="matKhau"  onChange={formik.handleChange} value={formik.values.matKhau} onBlur = {formik.handleBlur} />
+              {formik.touched.matKhau && formik.errors.matKhau && (
+                <p className="alert alert-danger mt-2 mb-0">
+                  {formik.errors.matKhau}
+                </p>
+              )}
             </Form.Item>
 
             <Form.Item label="Họ tên">
-              <Input name="hoTen"   onChange={formik.handleChange} value={formik.values.hoTen}/>
+              <Input name="hoTen"  onChange={formik.handleChange} value={formik.values.hoTen} onBlur = {formik.handleBlur}/>
+              {formik.touched.hoTen && formik.errors.hoTen && (
+                <p className="alert alert-danger mt-2 mb-0">
+                  {formik.errors.hoTen}
+                </p>
+              )}
             </Form.Item>
           </div>
           <div className="col-6">
             <Form.Item label="Email">
-              <Input name="email"  onChange={formik.handleChange}  value={formik.values.email}/>
+              <Input name="email"  onChange={formik.handleChange}  value={formik.values.email} onBlur = {formik.handleBlur} />
+              {formik.touched.email && formik.errors.email && (
+                <p className="alert alert-danger mt-2 mb-0">
+                  {formik.errors.email}
+                </p>
+              )}
             </Form.Item>
 
             <Form.Item label="Số điện thoại">
-              <Input name="soDT"  onChange={formik.handleChange} value={formik.values.soDt} />
+              <Input name="soDt" onChange={formik.handleChange} value={formik.values.soDt} onBlur={formik.handleBlur} />
+              {formik.touched.soDt && formik.errors.soDt && (
+                <p className="alert alert-danger mt-2 mb-0">
+                  {formik.errors.soDt}
+                </p>
+              )}
             </Form.Item>
 
             <Form.Item label="Loại người dùng">

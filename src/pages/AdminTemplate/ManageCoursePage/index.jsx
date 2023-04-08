@@ -9,10 +9,11 @@ import {
 } from "@ant-design/icons";
 import { actDeleteCourse, actFetchListCourse } from "./duck/action";
 import RegisterCourseModal from "./RegisterCourseModal";
-import { actFetchListUsereRegistered, actFetchListUserNotRegistered, actFetchListUserWaiting } from "./RegisterCourseModal/duck/action";
-import { maKhoaHocObj } from "../../../_core/models/maKhoaHocObj";
+import { actFetchListUserRegistered, actFetchListUserNotRegistered, actFetchListUserWaiting } from "./RegisterCourseModal/duck/action";
+import { useMediaQuery } from "react-responsive";
 
 export default function ManageCoursePage() {
+  const largeScreen = useMediaQuery({ query: "(max-width:1280px)" });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -25,7 +26,7 @@ export default function ManageCoursePage() {
   };
   
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.listCourseReducer.listCourse);
+  const data = useSelector((state) => state.listCourseReducerAdmin.listCourse);
   const [course,setCourse] = useState({})
 
   useEffect(() => {
@@ -76,7 +77,7 @@ export default function ManageCoursePage() {
           </Fragment>
         );
       },
-      width: "20%",
+      width: largeScreen ? "10%" : "20%",
     },
     {
       title: "Lượt xem",
@@ -105,13 +106,16 @@ export default function ManageCoursePage() {
               className="text-warning me-3"
               style={{ fontSize: "25px", cursor: "pointer" }}
               onClick = {() => {
-                const newMaKhoaHocObj = new maKhoaHocObj()
-                newMaKhoaHocObj.maKhoaHoc = course.maKhoaHoc
+                // const newMaKhoaHocObj = new maKhoaHocObj()
+                // newMaKhoaHocObj.maKhoaHoc = course.maKhoaHoc
+                const newMaKhoaHocObj = {
+                  maKhoaHoc:course.maKhoaHoc
+                }
                 showModal();
                 setCourse(course)
                 dispatch(actFetchListUserNotRegistered(newMaKhoaHocObj))
                 dispatch(actFetchListUserWaiting(newMaKhoaHocObj))
-                dispatch(actFetchListUsereRegistered(newMaKhoaHocObj))
+                dispatch(actFetchListUserRegistered(newMaKhoaHocObj))
               }}
             >
               <FileAddOutlined />
@@ -155,7 +159,14 @@ export default function ManageCoursePage() {
 
   const onChange = (pagination, filters, sorter, extra) => {};
 
-  const onSearch = (value) => {};
+  const onChangeSearch = (e) => {
+    dispatch(actFetchListCourse(e.target.value));
+  }
+  const onSearch = (value) => {
+    console.log(value)
+    dispatch(actFetchListCourse(value))
+  };
+
   const { Search } = Input;
 
   return (
@@ -178,6 +189,7 @@ export default function ManageCoursePage() {
         className="mb-3"
         placeholder="Search"
         onSearch={onSearch}
+        onChange={onChangeSearch}
         enterButton
       />
       <Table

@@ -87,7 +87,7 @@ export default function AdminTemplate(){
     return <Navigate  replace to="/auth"/>
   }
   
-  return (
+  return (    
     <div>
     <Header />
     <div id="layoutSidenav">

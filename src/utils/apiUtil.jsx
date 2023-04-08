@@ -4,15 +4,23 @@ const TOKEN_CYBERSOFT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb2
 
 const api = axios.create({
     baseURL:"https://elearningnew.cybersoft.edu.vn/api/",
-})
-
+});
 api.interceptors.request.use((config) => {
+    const renderAuth=()=>{
+        if(localStorage.getItem("UserAdmin")){
+            return `Bearer ${JSON.parse(localStorage.getItem("UserAdmin")).accessToken}`;
+        }
+        else if(localStorage.getItem("User")){
+            return `Bearer ${JSON.parse(localStorage.getItem("User")).accessToken}`;
+        }
+        else{
+            return "";
+        }
+    }
     config.headers = {
         ...config.headers,
         TokenCybersoft:TOKEN_CYBERSOFT,
-        Authorization: localStorage.getItem("UserAdmin")
-      ? `Bearer ${JSON.parse(localStorage.getItem("UserAdmin")).accessToken}`
-      : "",
+        Authorization:renderAuth(),
     }
     return config;
 })

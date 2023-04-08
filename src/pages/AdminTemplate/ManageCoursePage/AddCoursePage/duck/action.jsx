@@ -30,6 +30,10 @@ export const actAddCourse = (formData) => {
         }
         catch(error){
             console.log(error?.response)
+            dispatch({
+                type:ActionType.ADD_COURSE_FAIL,
+                payload:error?.response
+            })
         }
     }
 }

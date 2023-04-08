@@ -2,12 +2,12 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Table, Input, Button, Modal, Select, Form } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
-import { actCancelCourse, actRegisterCourse } from "./duck/action";
+import { actCancelCourse, actFetchListCourseRegistered, actRegisterCourse } from "./duck/action";
 import { actFetchListCourse } from "../../ManageCoursePage/duck/action";
-import { UserObj } from "../../../../_core/models/userObj";
 
 export default function RegisterCourseModal(props) {
   const dispatch = useDispatch()
+
 
   const columnsListCourseWaiting = [
     {
@@ -33,9 +33,10 @@ export default function RegisterCourseModal(props) {
           <Fragment>
             <Button
               onClick={() => {
-                const newUserObj = new UserObj()
-                newUserObj.maKhoaHoc = course.maKhoaHoc
-                newUserObj.taiKhoan = user.taiKhoan
+                const newUserObj = {
+                  maKhoaHoc:course.maKhoaHoc,
+                  taiKhoan:user.taiKhoan
+                }
                   dispatch(actRegisterCourse(newUserObj))
               }}
               style={{ fontSize: "13px" }}
@@ -50,9 +51,10 @@ export default function RegisterCourseModal(props) {
               className="text-danger"
               to="/"
               onClick={() => {
-                const newUserObj = new UserObj()
-                newUserObj.maKhoaHoc = course.maKhoaHoc
-                newUserObj.taiKhoan = user.taiKhoan
+                const newUserObj = {
+                  maKhoaHoc:course.maKhoaHoc,
+                  taiKhoan:user.taiKhoan
+                }
                 if (window.confirm(`Bạn có muốn hủy khóa học ${course.tenKhoaHoc} không?`)) {
                   dispatch(actCancelCourse(newUserObj))
                 }
@@ -94,9 +96,10 @@ export default function RegisterCourseModal(props) {
               style={{ fontSize: "13px", cursor: "pointer" }}
               className="text-danger"
               onClick={() => {
-                const newUserObj = new UserObj()
-                newUserObj.maKhoaHoc = course.maKhoaHoc
-                newUserObj.taiKhoan = user.taiKhoan
+                const newUserObj = {
+                  maKhoaHoc:course.maKhoaHoc,
+                  taiKhoan:user.taiKhoan
+                }
                 if (window.confirm(`Bạn có muốn hủy khóa học ${course.tenKhoaHoc} không?`)) {
                   dispatch(actCancelCourse(newUserObj))
                 }
