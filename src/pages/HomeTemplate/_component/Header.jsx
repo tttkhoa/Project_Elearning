@@ -44,7 +44,7 @@ export default function HeaderHomePage() {
   }
   const renderRegisterLoginButton=()=>{
     if(localStorage.getItem("User")||localStorage.getItem("UserAdmin")){
-      return <li className="nav-item mx-auto my-2">  
+      return <li className="nav-item mx-auto my-2 px-0">  
       <button className="btn btn-outline-warning mx-1 d-md-none d-lg-inline-block" onClick={()=>navigate("/profile")}>Thông tin</button>                      
       <button className="btn btn-warning mx-1 d-md-none d-lg-inline-block" onClick={handleLogout}>Đăng xuất</button>
     </li>  
@@ -69,7 +69,7 @@ export default function HeaderHomePage() {
           data-bs-toggle="collapse"
           data-bs-target="#collapsibleNavId"
           aria-controls="collapsibleNavId"
-          aria-expanded="false"
+          aria-expanded="true"
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon" />
@@ -79,11 +79,11 @@ export default function HeaderHomePage() {
           id="collapsibleNavId"
         >
           <ul className="navbar-nav nav-menu mx-0 d-flex justify-content-between">            
-            <li className="btn-group mx-auto">
-              <button className="btn btn-outline-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <li className="dropdown mx-auto my-auto">
+              <button className="btn btn-outline-warning dropdown-toggle py-2" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="true">
                 <span className="navbar-toggler-icon"/> Khóa học đào tạo
               </button>
-              <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">                  
+              <ul className="dropdown-menu " aria-labelledby="dropdownMenuButton">                  
                   {renderCourseMenu()}
               </ul>
             </li>

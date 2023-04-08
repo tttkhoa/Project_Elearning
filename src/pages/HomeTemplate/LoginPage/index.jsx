@@ -43,27 +43,24 @@ export default function LoginPage() {
             </div>
             <div className="card-body">
               <form onSubmit={handleSubmit}>
-                <div className="input-group form-group my-2">
-                  <div className="input-group-prepend mx-1">
-                    <span className="input-group-text"><FontAwesomeIcon icon={faUser} /></span>
+                <div className="input-group my-2">
+                  <div className="input-group-icon mx-1">
+                    <span className="input-group-text"><FontAwesomeIcon icon={faUser} /></span>                    
                   </div>
                   <div>
-                    <input type="text" className="input-username text-center" name="taiKhoan" placeholder="Nhập tài khoản" onChange={handleOnChange} required />
-                  </div>
-                                    
-                  
-                  
+                    <input type="text" className="input-group-username text-center" name="taiKhoan" placeholder="Nhập tài khoản" onChange={handleOnChange} required />
+                  </div>                 
                 </div>
-                <div className="input-group form-group my-2">
-                  <div className="input-group-prepend mx-1">
+                <div className="input-group my-2">
+                  <div className="input-group-icon mx-1">
                     <span className="input-group-text"><FontAwesomeIcon icon={faKey} /></span>
                   </div>
                   <div>
-                    <input type="password" className="input-password text-center" name="matKhau" placeholder="Nhập mật khẩu" onChange={handleOnChange} required/>
+                    <input type="password" className="input-group-password text-center" name="matKhau" placeholder="Nhập mật khẩu" onChange={handleOnChange} required/>
                   </div>                
                   
                 </div>                
-                <div className="form-group">
+                <div>
                   <button className="btn btn-warning text-center d-block mx-auto">Đăng nhập</button>
                 </div>
                 {renderNotification()}

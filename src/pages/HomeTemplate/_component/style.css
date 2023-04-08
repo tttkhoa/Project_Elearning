@@ -43,6 +43,9 @@
 .left-content{
     text-align: justify;    
 }
+.input-register{
+    display: flex;
+}
 .input-register input{
     border: 1px solid orange;
     border-radius: 7px;    
@@ -80,4 +83,24 @@
 }
 .search-input{
     width: 235px;
+}
+.dropdown-menu{
+    position: absolute!important;
+    top: 100% !important;
+}
+@media screen and (max-width:400px) {
+    .input-register{
+        display: block;
+    } 
+    .input-register input{
+        border: 1px solid orange;
+        border-radius: 7px;    
+        margin-bottom: 20px;
+        width: 100%;
+        padding: 0 10px;
+        line-height: 60px;
+    }
+    .input-register button{
+        margin-left: 30%;
+    }
 }

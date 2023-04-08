@@ -24,3 +24,8 @@
 .edit-button a{
   width: 250px;
 }
+@media screen and (max-width:400px){
+    .info-input{
+      width: 88%;
+    }
+}

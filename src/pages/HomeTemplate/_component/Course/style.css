@@ -125,5 +125,20 @@
 .view-count{
     color: rgb(107, 17, 17);
 }
+@media screen and (max-width:415px){
+    .carousel{
+        background-image: url(./../../HomePage/Image/bg-image.jpg);
+        background-position: center;
+        background-size:cover;
+        background-repeat:no-repeat;
+        height: 400px;
+        width: 100%;        
+    }
+    .carousel a{
+        width: 250px;
+        padding: 10px 0;
+    }
+
+}
 
 

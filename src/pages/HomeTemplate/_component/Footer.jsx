@@ -15,7 +15,7 @@ export default function FooterHomePage() {
             <p className='text-white'>Cybersoft sẽ gửi các khoá học trực tuyến và các chương trình CyberLive hoàn toàn MIỄN Phí
               và các chương trình KHUYẾN MÃI hấp dẫn đến các bạn
             </p>
-            <div className='d-flex input-register'>
+            <div className='input-register'>
               <input type="text" placeholder='your address@email.com'/>
               <button className='btn btn-outline-warning'>Đăng ký</button>
             </div>
