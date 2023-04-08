@@ -58,7 +58,7 @@ export default function HeaderHomePage() {
   }
   if(loading) return <Loader/>
   return (
-    <>
+    <div className="row">
       <nav className="navbar navbar-expand-md navbar-dark bg-dark">
         <div>          
           <NavLink to=""><img src={require('./Image/cyber-logo.png')} width="200" alt="Logo" /></NavLink>
@@ -94,6 +94,6 @@ export default function HeaderHomePage() {
           </ul>          
         </div>        
       </nav>     
-    </>
+    </div>
   );
 }

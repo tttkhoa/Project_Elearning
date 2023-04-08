@@ -5,10 +5,10 @@ import Footer from "./_component/Footer"
 
 export default function HomeTemplate() {
   return (
-    <div>
+    <>      
       <Header/>
       <Outlet/>
       <Footer/>
-    </div>
+    </>
   )
 }

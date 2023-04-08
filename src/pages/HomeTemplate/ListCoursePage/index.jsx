@@ -39,7 +39,7 @@ export default function ListCoursePage(){
   
   if(loading) return <Loader/>
   return (
-    <>
+    <div className='row'>
       <div className="d-flex justify-content-center mt-4">                
         <div className="container mt-3">
             <h1 className='text-center my-3'>DANH SÁCH CÁC KHOÁ HỌC</h1>
@@ -53,6 +53,6 @@ export default function ListCoursePage(){
             </div>               
         </div>            
       </div>          
-    </>
+    </div>
   )
 }

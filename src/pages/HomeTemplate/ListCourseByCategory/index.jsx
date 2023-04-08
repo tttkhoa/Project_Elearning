@@ -49,13 +49,13 @@ export default function ListCourseByCategory() {
     }    
     if(loading) return <Loader/>
     return (
-      <>
+      <div className='row'>
         <div className="d-flex justify-content-center mt-4">                
           <div className="container mt-3">
               <h1 className='text-center my-3' style={{"textTransform":"uppercase"}}>Các khoá học {renderCategoryTitle()}</h1>
               <div className='row'>{renderCourse()}</div>                          
           </div>            
         </div>          
-      </>
+      </div>
     )
 }
