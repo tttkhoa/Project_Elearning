@@ -58,103 +58,100 @@ export default function ProfilePage() {
   }  
   if (loading) return <Loader />;
   return (
-    <div className="container mt-5">
+    <div className="container my-5">
       <Tabs
       defaultActiveKey="info"
-      id="uncontrolled-tab-example"
-      className="mb-3"
-    >
-      <Tab eventKey="info" title="Thông tin học viên">
-        <div className="card-body">
-          <form className="d-block">
-            <div className="mx-auto form-info">
-              <div className="input-group form-group my-2 d-flex">
-                <div
-                  className="input-group-prepend mx-1"
-                  style={{ width: "55px" }}
-                >
-                  <span className="input-group-text">
-                    <FontAwesomeIcon icon={faUser} />
-                  </span>
+      id="uncontrolled-tab-example">
+        <Tab eventKey="info" title="Thông tin học viên">
+          <div className="card-body">
+            <form className="d-block">
+              <div className="mx-auto form-info">
+                <div className="input-group form-group my-2 d-flex">
+                  <div
+                    className="input-group-prepend mx-1"
+                    style={{ width: "55px" }}
+                  >
+                    <span className="input-group-text">
+                      <FontAwesomeIcon icon={faUser} />
+                    </span>
+                  </div>
+                  <div>
+                    <input className="text-warning info-input px-1" value={profile&&profile.taiKhoan} name="taiKhoan" disabled/>            
+                  </div>
                 </div>
-                <div>
-                  <input className="text-warning info-input px-1" value={profile&&profile.taiKhoan} name="taiKhoan" disabled/>            
+                <div className="input-group form-group my-2">
+                  <div
+                    className="input-group-prepend mx-1"
+                    style={{ width: "55px" }}
+                  >
+                    <span className="input-group-text">
+                      <FontAwesomeIcon icon={faKey} />
+                    </span>
+                  </div>
+                  <div>
+                    <input className="text-warning info-input px-1" value={profile&&profile.matKhau} name="matKhau" disabled={disabled} onChange={handleOnChange} required/>
+                  </div>
                 </div>
-              </div>
-              <div className="input-group form-group my-2">
-                <div
-                  className="input-group-prepend mx-1"
-                  style={{ width: "55px" }}
-                >
-                  <span className="input-group-text">
-                    <FontAwesomeIcon icon={faKey} />
-                  </span>
+                <div className="input-group form-group my-2">
+                  <div
+                    className="input-group-prepend mx-1"
+                    style={{ width: "55px" }}
+                  >
+                    <span className="input-group-text">
+                      <FontAwesomeIcon icon={faFont} />
+                    </span>
+                  </div>
+                  <div>
+                    <input className="text-warning info-input px-1" value={profile.hoTen&&profile.hoTen} name="hoTen" disabled={disabled} onChange={handleOnChange} required/>
+                  </div>
                 </div>
-                <div>
-                  <input className="text-warning info-input px-1" value={profile&&profile.matKhau} name="matKhau" disabled={disabled} onChange={handleOnChange} required/>
-                </div>
-              </div>
-              <div className="input-group form-group my-2">
-                <div
-                  className="input-group-prepend mx-1"
-                  style={{ width: "55px" }}
-                >
-                  <span className="input-group-text">
-                    <FontAwesomeIcon icon={faFont} />
-                  </span>
-                </div>
-                <div>
-                  <input className="text-warning info-input px-1" value={profile.hoTen&&profile.hoTen} name="hoTen" disabled={disabled} onChange={handleOnChange} required/>
-                </div>
-              </div>
-              <div className="input-group form-group my-2">
-                <div
-                  className="input-group-prepend mx-1"
-                  style={{ width: "55px" }}
-                >
-                  <span className="input-group-text">
-                    <FontAwesomeIcon icon={faPhone} />
-                  </span>
-                </div>
-                <div>
-                  <input className="text-warning info-input px-1" value={profile.soDT&&profile.soDT} name="soDT" disabled={disabled} onChange={handleOnChange} required/>
+                <div className="input-group form-group my-2">
+                  <div
+                    className="input-group-prepend mx-1"
+                    style={{ width: "55px" }}
+                  >
+                    <span className="input-group-text">
+                      <FontAwesomeIcon icon={faPhone} />
+                    </span>
+                  </div>
+                  <div>
+                    <input className="text-warning info-input px-1" value={profile.soDT&&profile.soDT} name="soDT" disabled={disabled} onChange={handleOnChange} required/>
 
+                  </div>
                 </div>
-              </div>
-              <div className="input-group form-group my-2">
-                <div
-                  className="input-group-prepend mx-1"
-                  style={{ width: "55px" }}
-                >
-                  <span className="input-group-text">
-                    <FontAwesomeIcon icon={faEnvelope} />
-                  </span>
-                </div>
-                <div>
-                <input className="text-warning info-input px-1" value={profile.email&&profile.email} name="email" disabled={disabled} onChange={handleOnChange} required/>
+                <div className="input-group form-group my-2">
+                  <div
+                    className="input-group-prepend mx-1"
+                    style={{ width: "55px" }}
+                  >
+                    <span className="input-group-text">
+                      <FontAwesomeIcon icon={faEnvelope} />
+                    </span>
+                  </div>
+                  <div>
+                  <input className="text-warning info-input px-1" value={profile.email&&profile.email} name="email" disabled={disabled} onChange={handleOnChange} required/>
 
+                  </div>
+                  
                 </div>
-                
+              </div>            
+              <div className="edit-button">
+                <NavLink className="btn btn-warning d-block mx-auto my-2" onClick={handleOnClickEdit}>
+                  Thay đổi thông tin
+                </NavLink>
+                <button className="btn btn-success d-block mx-auto " onClick={handleOnClickUpdate}>
+                  Cập nhật
+                </button>
               </div>
-            </div>            
-            <div className="edit-button">
-              <NavLink className="btn btn-warning d-block mx-auto my-2" onClick={handleOnClickEdit}>
-                Thay đổi thông tin
-              </NavLink>
-              <button className="btn btn-success d-block mx-auto " onClick={handleOnClickUpdate}>
-                Cập nhật
-              </button>
-            </div>
-          </form>          
-        </div>
+            </form>          
+          </div>
         </Tab>
-      <Tab eventKey="course" title="Thông tin khoá học">
-        <div className="row">
-          {renderCourse()}
-        </div>
-      </Tab>
-      
-    </Tabs>
+        <Tab eventKey="course" title="Thông tin khoá học">
+          <div className="row px-4 py-2">
+            {renderCourse()}
+          </div>
+        </Tab>        
+      </Tabs>
     </div>
     
     

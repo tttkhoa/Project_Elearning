@@ -25,8 +25,8 @@ export default function HomePage() {
     
     if(loading) return <Loader/>
     return (
-      <>
-        <div className="carousel row mx-0">          
+      <div className='row'>
+        <div className="carousel mx-0">          
             <NavLink className='carousel-button' to="/list-course">Xem các khoá học</NavLink>         
         </div>
         <div className="d-flex justify-content-center mt-4">                
@@ -35,6 +35,6 @@ export default function HomePage() {
               <div className='row'>{renderCourse()}</div>  
           </div>            
         </div>          
-      </>
+      </div>
     )
 }

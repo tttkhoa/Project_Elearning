@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot,faPhone } from '@fortawesome/free-solid-svg-icons'
 export default function FooterHomePage() {
   return (
-    <div className='bg-dark'>
-      <div className='row mt-5'>
+    <>
+      <div className='bg-dark row'>
         <div className='col-xl-6 col-lg-6 col-sm-12 mt-3 px-5 left-content'>
           <div className='logo-footer'>
             <img src={require('./Image/cyber-logo.png')} width="200" alt="Logo" />
@@ -30,7 +30,7 @@ export default function FooterHomePage() {
             </div>
           </div>
         </div>
-        <div className='col-xl-5 col-lg-5 col-sm-12 my-3 px-5 right-content'>
+        <div className='col-xl-6 col-lg-6 col-sm-12 my-3 px-5 right-content'>
           <form className='mx-auto'>          
               <h3 className='text-center' style={{"color":"#fec235"}}>ĐĂNG KÍ TƯ VẤN</h3>
                 <div>
@@ -44,10 +44,11 @@ export default function FooterHomePage() {
                 </div>           
                 <button className='btn btn-outline-warning mt-1'>ĐĂNG KÝ TƯ VẤN</button>                    
           </form>        
-        </div>     
+        </div>   
+        <hr className='text-white'></hr>
+        <div className='footer-word' >Copyright - TTTK - PTD @ 2023</div>  
       </div>
-      <hr className='text-white'></hr>
-      <div className='footer-word' >Copyright - TTTK - PTD @ 2023</div>
-    </div>
+      
+    </>    
   )
 }
